@@ -51,7 +51,7 @@ public class CarouselFigureController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return list(model);
+		return "redirect:/list";
 	}
 
 }
