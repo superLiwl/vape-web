@@ -1,12 +1,12 @@
-package cn.aldd.vape.alddvapeweb;
+package cn.aldd.vape;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class AlddVapeWebApplication {
+public class StartWebApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AlddVapeWebApplication.class, args);
+		SpringApplication.run(StartWebApplication.class, args);
 	}
 }

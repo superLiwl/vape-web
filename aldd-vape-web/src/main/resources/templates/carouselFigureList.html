@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="/css/basic.css" />
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+	})
+</script>
+</head>
+<body>
+
+	<table class="gridtable">
+		<tr>
+			<th>id</th>
+			<th>图片</th>
+			<th>排序</th>
+		</tr>
+		<tr th:each="data:${list}">
+			<td th:text="${data.id}"></td>
+			<td><img th:src="'http://47.95.2.132:9999/images/' + ${data.url}"/></td>
+			<td th:text="${data.sort}"></td>
+		</tr>
+	</table>
+</body>
+</html>
