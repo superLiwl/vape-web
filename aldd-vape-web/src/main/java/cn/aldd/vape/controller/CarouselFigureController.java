@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import cn.aldd.vape.constants.CommonConstants;
+import cn.aldd.vape.user.micro.vo.CarouselFigureVo;
 import cn.aldd.vape.util.FtpUtil;
 import cn.aldd.vape.util.HttpUtils;
 import cn.aldd.vape.util.JSONUtil;
-import cn.aldd.vape.vo.CarouselFigureVo;
 
 @Controller
 public class CarouselFigureController {

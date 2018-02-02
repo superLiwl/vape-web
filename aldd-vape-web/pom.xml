@@ -30,6 +30,11 @@
 			<artifactId>aldd-vape-common</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>cn.aldd.vape</groupId>
+			<artifactId>aldd-vape-user-vo</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
