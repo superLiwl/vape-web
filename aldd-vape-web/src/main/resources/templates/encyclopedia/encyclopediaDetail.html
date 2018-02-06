@@ -8,27 +8,27 @@
 </head>
 <body>
 	<table class="gridtable">
-		<form action="/carouselFigure/upload" th:action="@{/carouselFigure/upload}" method="post" enctype="multipart/form-data" >
-			<input th:value="${data.id}" name ="id" style="display: none"/>
+		<form action="/encyclopedia/save" th:action="@{/encyclopedia/save}" method="post">
+			<input th:value="${data.id}" name="id" style="display: none" />
 			<tr>
 				<td>id</td>
 				<td th:text="${data.id}"></td>
 			</tr>
 			<tr>
-				<td>图片</td>
-				<td><img th:src="${data.url}" width="100" height="100"/></td>
+				<td>标题</td>
+				<th><input th:value="${data.title}" name="title" maxlength="50" /></th>
 			</tr>
 			<tr>
-				<td>上传图片</td>
-				<td><input type="file" name="file"/></td>
+				<td>作者</td>
+				<th><input th:value="${data.author}" name="author" maxlength="50" /></th>
 			</tr>
 			<tr>
-				<td>排序</td>
-				<th><input th:value="${data.sort}" name ="sort"/></th>
+				<td>内容</td>
+				<th><input th:value="${data.content}" name="content" /></th>
 			</tr>
 			<tr>
 				<td></td>
-				<th><input type="submit" value="提交"/></th>
+				<th><input type="submit" value="提交" /></th>
 			</tr>
 		</form>
 	</table>

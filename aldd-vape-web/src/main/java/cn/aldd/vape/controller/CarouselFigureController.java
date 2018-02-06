@@ -18,6 +18,7 @@ import cn.aldd.vape.util.HttpUtils;
 import cn.aldd.vape.util.JSONUtil;
 
 @Controller
+@RequestMapping("/carouselFigure")
 public class CarouselFigureController {
 
 	@RequestMapping("/list")
@@ -51,7 +52,7 @@ public class CarouselFigureController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "redirect:/list";
+		return "redirect:/carouselFigure/list";
 	}
 
 }
