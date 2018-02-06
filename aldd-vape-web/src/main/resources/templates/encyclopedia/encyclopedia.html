@@ -16,10 +16,10 @@
 			dataType : 'json',
 			timeout : 1000,
 			success : function(result) {
-				alert(result);
+				window.location.href="list";
 			}, //成功执行方法    
 			error : function(xhr) {
-				alert("错误提示： " + xhr.status + " " + xhr.statusText);
+				window.location.href="list";
 			} //错误执行方法    
 		});
 	}
