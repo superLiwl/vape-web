@@ -5,16 +5,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="stylesheet" href="/css/basic.css" />
 <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	function toDelete(id){
+		$.ajax({
+			url : '/encyclopedia/delete',
+			type : 'GET',
+			data : {
+				id : id
+			},
+			dataType : 'json',
+			timeout : 1000,
+			success : function(result) {
+				alert(result);
+			}, //成功执行方法    
+			error : function(xhr) {
+				alert("错误提示： " + xhr.status + " " + xhr.statusText);
+			} //错误执行方法    
+		});
+	}
+</script>
 </head>
 <body>
-
+	<td><a th:href="'/encyclopedia/toAdd'">新增百科</a></td>
 	<table class="gridtable">
 		<tr>
 			<th>id</th>
 			<th>标题</th>
 			<th>作者</th>
 			<th>内容</th>
-			<th>操作</th>
+			<th>编辑</th>
+			<th>删除</th>
 		</tr>
 		<tr th:each="data:${list}">
 			<td th:text="${data.id}"></td>
@@ -22,6 +42,7 @@
 			<td th:text="${data.author}"></td>
 			<td th:text="${data.content}"></td>
 			<td><a th:href="'/encyclopedia/detail/'+${data.id}">编辑</a></td>
+			<td><input type="button" value="删除"  th:onclick="'toDelete(\''+${data.id}+'\')'" /></td>
 		</tr>
 	</table>
 </body>

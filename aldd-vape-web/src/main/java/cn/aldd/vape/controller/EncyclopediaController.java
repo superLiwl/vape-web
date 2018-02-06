@@ -1,10 +1,12 @@
 package cn.aldd.vape.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -23,7 +25,11 @@ public class EncyclopediaController {
 		String result = HttpUtils.sendPost(CommonConstants.MICRO_URL + "/encyclopedia/micro/1/1000",
 				JSONUtil.toJson(encyclopediaVo));
 		Map<String, Object> map = JSONUtil.toMap(result);
-		model.addAttribute("list", JSONUtil.toList(JSONUtil.toJson(map.get("list")), EncyclopediaVo.class));
+		List<EncyclopediaVo> list = null;
+		if (null != map.get("list")) {
+			list = JSONUtil.toList(JSONUtil.toJson(map.get("list")), EncyclopediaVo.class);
+		}
+		model.addAttribute("list", list);
 		model.addAttribute("imgUrl", CommonConstants.IMG_URL);
 		return "encyclopedia/encyclopedia";
 	}
@@ -32,6 +38,13 @@ public class EncyclopediaController {
 	public String detail(Model model, @PathVariable("id") String id) {
 		String result = HttpUtils.sendGet(CommonConstants.MICRO_URL + "/encyclopedia/micro/" + id);
 		model.addAttribute("data", JSONUtil.toBean(result, EncyclopediaVo.class));
+		model.addAttribute("imgUrl", CommonConstants.IMG_URL);
+		return "encyclopedia/encyclopediaDetail";
+	}
+
+	@RequestMapping("/toAdd")
+	public String toAdd(Model model) {
+		model.addAttribute("data", new EncyclopediaVo());
 		model.addAttribute("imgUrl", CommonConstants.IMG_URL);
 		return "encyclopedia/encyclopediaDetail";
 	}
@@ -45,6 +58,12 @@ public class EncyclopediaController {
 		encyclopediaVo.setId(id);
 		encyclopediaVo.setTitle(title);
 		HttpUtils.sendPost(CommonConstants.MICRO_URL + "/encyclopedia/micro/add/", JSONUtil.toJson(encyclopediaVo));
+		return "redirect:/encyclopedia/list";
+	}
+
+	@RequestMapping("/delete")
+	public String delete(Model model, @RequestBody @RequestParam("id") String id) {
+		HttpUtils.sendGet(CommonConstants.MICRO_URL + "/encyclopedia/micro/delete/" + id);
 		return "redirect:/encyclopedia/list";
 	}
 }
